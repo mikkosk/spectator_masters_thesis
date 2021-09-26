@@ -1,0 +1,45 @@
+Onko mahdollista saada siitä, mistä merkistä mikäkin numero alkaa?
+	-> Jos tsekkaa yksittäisiä lehtiä, pitää lainauksista varmaan parsia joitakin merkkejä alusta ja lopusta, että
+	ei vuoda väärään numeroon
+
+Erilaisia teoksia missä Spectatoria on käytetty on ainakin 800, vähintään 3000. Onko järkevää alkaa manuaalisesti katsomaan
+vai onko fiksumpaa lajitella jotenkin toisin ensin, ja sitten vasta katsoa mitkä asiat niiden sisällä ovat oleellisia trendejä.
+	-> Esim. Pitkät lainaukset ovat yleensä Spectatorin editioita. Tätä tiettyä suosittua lainausta käytetään aina
+	Miltonin Lost Paradisessa
+Tarkemman jaon voisi sitten tehdä vaikka lyhyemmät ajalta jos tarpeen.
+
+Miten suhteuttaa se, että asiat, jotka lainataan Spectatorista ei välttämättä ole peräisin Spectatorista?
+	-Pitäisikö testata suosituimpia lainauksia dataan ennen vuotta 1712?
+
+Miten osoittaa merkittäväksi uudelleen käyttö vrt. inspiroituneet tekstit?
+
+Voisiko pyöräyttää jonkin toisen version läpi testatakseen graafeja, jotta ei jää vain yhden version varaan?
+
+Miksi vaan osa Spectatoreista löytyy?
+
+Ovatko osumat millään tavalla arvokkaita? Onko liian sattuman varaista moneenko jakautuu?
+	-Voisi varmaan parsia kokoon lähekkäiset lainaukset, mutta maksaako vaivaa?
+__________________________________
+
+Kiinnostavia nostoja datasta:
+
+______________________________
+
+Mitä kaikkea voisi tehdä:
+
+Mitä lainataan:
+	-Mitkä osat? Mahdollisesti mitkä lehdet, jota kautta kirjoittajat.
+	-Ajallinen rakenne. Onko jokin suositumpaa eri aikaan. Muuttuuko siis se miten luetaan?
+	-Löytyisikö jotain yksittäistä esimerkkiä josta voisi tarkastella miten lainaaminen muuttuu pitemmällä aikavälillä.
+		-Esim jokin opetuskirja?
+
+Mihin lainataan? 
+	-Minkälaiset teokset?
+
+Miten lainataan:
+	-Minkälaisissa osissa lainataan? Pitkät, lyhyet. Monta kertaa eri paikoissa? Kerran pitkästi?
+	-Kokonaisia lehtiä vai lyhyempiä paloja?
+
+Kuka lainaa?
+	-Tähän voisi yhdistää Tonsonit
+	-Maantieteelliset ominaisuudet?

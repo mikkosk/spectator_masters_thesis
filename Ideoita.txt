@@ -103,3 +103,48 @@ Pope
 Virgil
 Horatius
 Steele
+
+
+Voisiko verrata jotenkin kaikki tuloksia vs ryhmiteltyjä tuloksia huomatakseen mitkä kohdat johtuvat editioista?
+
+------
+
+Edelstein, D., R. Morrissey & G. Roe. 2013. ‘To Quote or not to Quote: Citation Strategies in the
+Encyclopédie’. Journal of the History of Ideas 74 (2): 213-36.
+
+Edmondson, C. & D. Edelstein, eds. 2019. Networks of Enlightenment: Digital Approaches to the Republic of
+Letters. Oxford: Oxford University Studies in the Enlightenment.
+
+Underwood, T. 2019. Distant Horizons: Digital Evidence and Literary Change. Chicago: U Chicago P
+------
+
+Viittaa BLASTiin ja miten sitä on COMHIS on sitä käytttänyytä
+
+------
+
+HAVAINTOJA TÄHÄN MENNESSÄ:
+
+-Suosituimmat tekstinpätkät ovat Miltonilta tai muita muiden kuin Spectatorin tekstien lainauksia.
+	-Seuraava vaihe on varmastikin se, että täytyy katsoa kuinka paljon tällaiset lainaukset sisältävät 
+	myös Spectatorin tekstiä ja kuinka paljon niistä on vääriä lainauksia
+	-Toki on huomioitava, että väärät lainaukset eivät välttämättä tarkoita, että Spectator ei vaikuttaisi näiden
+	suosioon, mutta sitä on vaikeampi näyttää toteen tätä kautta
+		-Esimerkiksi Miltonista olisi kuitenkin asiallista tehdä ESTC datalla muutamia graafeja, jotta voisi tarkistaa
+		onko sillä jotain yhteneväisyyksiä Spectatorin kanssa
+
+- Muita suosittuja kirjailijoita ovat teksteissä Vergilius ja Homeros sekä myös paljon Raamatun lainauksia (tsekkaa myös muut)
+	- Näiltä ei välttämättä niin paljon suoria lainauksia, mutta heidän vaikutustaan ja tyyliään korostetaan
+	- Spectatorissa selvästi arvostetaan monilta osin juurikin vanhoja runoilijoita ja pelkkää uutta runoutta lukeneita, jopa
+	mollataan. 
+		- Tämä osuu kiinnostavasti 1750-luvun kaanonin synnyn kehitykseen
+	- Nämä asiat voivat olla epämielekkäitä esittää kvantitatiivisesti, mutta kvalitatiivisesti tämä käy nopeasti selvästi
+
+- "Suosituimpien" lehtien aiheissa paljon juuri ihan taideanalyysia, mutta myös luontokuvausta, uskonnollista/moraalista sisältöä
+sekä jonkin verran puhdasta käytösopasmaista tekstiä
+	- Suosittu vaikea asia määrittää. Olen tarkastellut muun muassa ryhmiteltyä dataa, joka poistaa jonkin määrän
+	päällekkäisiä editioita sekä koko dataa.
+		- Miten pitäisi suhtautua moniin editioihin. Tavallaan monet editiot kielivät suosiosta, mutta
+		kadottaako se alleen jotain?
+
+- Addisonin tekstit tuntuvat korostuvan suosituimmissa teksteissä
+	- Menee osittain varmasti laianusten piikkiin

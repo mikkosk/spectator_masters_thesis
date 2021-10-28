@@ -7,8 +7,10 @@ all_hits_1711 <- getMostHits(volumes_array[[1]] %>% filter(publication_year < 17
 for(i in 2:8) {
   newVol <- getMostHits(volumes_array[[i]] %>% filter(publication_year < 1711), i)
   
-  all_hits_1711 <- all_hits %>% rbind(newVol)
+  all_hits_1711 <<- all_hits_1711 %>% rbind(newVol)
 }
+
+all_hits_1711 <- all_hits_1711 %>% arrange(desc(character_hits))
 
 allFigs <- list()
 

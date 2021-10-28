@@ -14,13 +14,13 @@
 getHitsPerCharacters <- function (volume, num) {
   volume <- volume %>%
     mutate(included_in_previous = if_else(estc_id %in% spectator$id, TRUE, FALSE))
-  vol_max_character <- volume %>% dplyr::summarise(max = max(text_end_primary)) %>% as.numeric
-  vol_reused_pages <- data.frame(c(1:floor(vol_max_character / 5000)),integer(floor(vol_max_character/ 5000)), integer(floor(vol_max_character/ 5000))) %>%
+  vol_max_character <- volume %>% dplyr::summarise(max = max(offsetPrimaryEnd)) %>% as.numeric
+  vol_reused_pages <- data.frame(c(0:floor(vol_max_character / 5000)),integer(floor(vol_max_character/ 5000) + 1), integer(floor(vol_max_character/ 5000) + 1)) %>%
     dplyr::rename(chars = 1, character_hits_previous = 2, character_hits_other = 3)
   
   for(row in 1:nrow(volume)) {
-    start <- floor(volume$text_start_primary[row] / 5000)
-    end <- floor(volume$text_end_primary[row] / 5000)
+    start <- floor(volume$offsetPrimaryStart[row] / 5000) + 1
+    end <- floor(volume$offsetPrimaryEnd[row] / 5000) + 1
     ifelse(volume$included_in_previous[row], 
            vol_reused_pages$character_hits_previous[start:end] <- vol_reused_pages$character_hits_previous[start:end] + 1,
            vol_reused_pages$character_hits_other[start:end] <- vol_reused_pages$character_hits_other[start:end] + 1)
@@ -41,7 +41,7 @@ for(i in 1:8) {
   newFig <- getHitsPerCharacters(volumes_array[[i]], i)
   allFigs[[i]] <- newFig
   
-  file <- paste("C:/Users/mikko/OneDrive/Työpöytä/Gradu/masters_thesis_spectator/graphs/", currentEdition ,"/volumes_pure/volume_", i, "_hit.png", sep="")
+  file <- paste("C:/Users/mikko/OneDrive/Työpöytä/Gradu/masters_thesis_spectator/graphs/", currentEdition ,"/volumes_all/volume_", i, "_hit.png", sep="")
   png(file=file,width=1200, height=700)
   print(newFig)
   dev.off()
@@ -207,3 +207,29 @@ file <- paste("C:/Users/mikko/OneDrive/Työpöytä/Gradu/masters_thesis_spectator/g
 png(file=file,width=1200, height=700)
 print(hits_figs)
 dev.off()
+
+## Under 5000
+
+under5000Figs <- list()
+
+for(i in 1:8) {
+  vol <- volumes_array[[i]] %>% filter(!(estc_id %in% under5000_entries$estc_id))
+  newFig <- getHitsPerCharacters(vol, i)
+  under5000Figs[[i]] <- newFig
+  
+  file <- paste("C:/Users/mikko/OneDrive/Työpöytä/Gradu/masters_thesis_spectator/graphs/", currentEdition ,"/volumes_under_5000/volume_", i, "_hit_distinct_title.png", sep="")
+  png(file=file,width=1200, height=700)
+  print(newFig)
+  dev.off()
+}
+
+
+hits_figs <- plot_grid(plotlist = under5000Figs)
+file <- paste("C:/Users/mikko/OneDrive/Työpöytä/Gradu/masters_thesis_spectator/graphs/", currentEdition, "/all_volumes_under_5000.png", sep="")
+png(file=file,width=1200, height=700)
+print(hits_figs)
+dev.off()
+
+## VOisi kokeilla jotain sellaista, että ottaa vain sellaiset fieldit, joissa on olemassa finalWorkField ja poistaa niista duplikaatit ja katsoo mitä puskee ulos.
+### Yksi onglemahan näissä on se, että pitkästä lainauksesta tulee myös enemmän hittejä
+

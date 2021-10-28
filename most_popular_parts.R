@@ -14,25 +14,97 @@
 getMostHits <- function (volume, num) {
   volume <- volume %>%
     mutate(included_in_previous = if_else(estc_id %in% spectator$id, TRUE, FALSE))
-  vol_max_character <- volume %>% dplyr::summarise(max = max(text_end_primary)) %>% as.numeric
-  vol_reused_parts <- data.frame(c(1:floor(vol_max_character / 5000)), integer(floor(vol_max_character/ 5000))) %>%
+  vol_max_character <- volume %>% dplyr::summarise(max = max(offsetPrimaryEnd)) %>% as.numeric
+  vol_reused_parts <- data.frame(c(0:floor(vol_max_character / 5000)), integer(floor(vol_max_character/ 5000) + 1)) %>%
     dplyr::rename(chars = 1, character_hits = 2) %>% mutate(volume = num)
   
+  print(floor(vol_max_character/ 5000) + 1)
+  # Let's use the fixedOffset here
+  ## Also add one to start and end since R starts row from 1 instead of 0 which
   for(row in 1:nrow(volume)) {
-    start <- floor(volume$text_start_primary[row] / 5000)
-    end <- floor(volume$text_end_primary[row] / 5000)
+    start <- floor(volume$offsetPrimaryStart[row] / 5000) + 1
+    end <- floor(volume$offsetPrimaryEnd[row] / 5000) + 1
     vol_reused_parts$character_hits[start:end] <- vol_reused_parts$character_hits[start:end] + 1
   }
   return(vol_reused_parts)
 }
 
-
+## All reuse cases
 all_hits <- getMostHits(volumes_array[[1]], 1)
 
 for(i in 2:8) {
   newVol <- getMostHits(volumes_array[[i]], i)
-  all_hits <- all_hits %>% rbind(newVol)
+  all_hits <<- all_hits %>% rbind(newVol)
 }
 
+## Pure reuse cases
+no_pure_hits <- getMostHits(volumes_array[[1]] %>% filter(!(estc_id %in% pure_only$id)), 1)
+
+for(i in 2:8) {
+  newVol <- getMostHits(volumes_array[[i]] %>% filter(!(estc_id %in% pure_only$id)), i)
+  no_pure_hits <<- no_pure_hits %>% rbind(newVol)
+}
+
+no_pure_hits <- no_pure_hits %>% arrange(desc(character_hits))
+
+## Semi distinct work entries cases
+title_hits <- getMostHits(volumes_array[[1]] %>% filter(!(estc_id %in% distinct_reuse_entries$estc_id)), 1)
+
+for(i in 2:8) {
+  newVol <- getMostHits(volumes_array[[i]] %>% filter(!(estc_id %in% distinct_reuse_entries$estc_id)), i)
+  title_hits <<- title_hits %>% rbind(newVol)
+}
+
+title_hits <- title_hits %>% arrange(desc(character_hits))
 
 
+## Entries with only short reuses
+short_hits <- getMostHits(volumes_array[[1]] %>% filter(!(estc_id %in% under5000_entries$estc_id)), 1)
+
+for(i in 2:8) {
+  newVol <- getMostHits(volumes_array[[i]] %>% filter(!(estc_id %in% under5000_entries$estc_id)), i)
+  short_hits <<- short_hits %>% rbind(newVol)
+}
+
+short_hits <- short_hits %>% arrange(desc(character_hits))
+
+
+
+## Entries from instructional books'
+instructional_hits <- getMostHits(volumes_array[[1]] %>% filter(!(estc_id %in% instructions)), 1)
+
+for(i in 2:8) {
+  newVol <- getMostHits(volumes_array[[i]] %>% filter(!(estc_id %in% instructions)), i)
+  instructional_hits <<- instructional_hits %>% rbind(newVol)
+}
+
+instructional_hits <- instructional_hits %>% arrange(desc(character_hits))
+
+
+## Create a combined table of different groups to allow easier observation
+all_hit_positions <- instructional_hits[c("volume", "chars")] %>% cbind(inst = rownames(instructional_hits)) %>%
+  mutate(short = 0) %>% mutate(no_pure = 0) %>% mutate(title = 0) %>% mutate(before11 = 0)
+
+print(nrow(instructional_hits))
+for (row in 1:nrow(instructional_hits)) {
+  curVol <- instructional_hits[row,]$volume
+  curChar <- instructional_hits[row,]$chars
+  
+  #Short
+  rank = which(short_hits$chars == curChar & short_hits$volume == curVol)
+  all_hit_positions$short[row] <- ifelse(length(rank) > 0, rank, 999)
+  
+  #Title
+  rank = which(title_hits$chars == curChar & title_hits$volume == curVol)
+  all_hit_positions$title[row] <- ifelse(length(rank) > 0, rank, 999)
+  
+  #No pure
+  rank = which(no_pure_hits$chars == curChar & no_pure_hits$volume == curVol)
+  all_hit_positions$no_pure[row] <-  ifelse(length(rank) > 0, rank, 999)
+  
+  #Before 1711
+  rank = which(all_hits_1711$chars == curChar & all_hits_1711$volume == curVol)
+  all_hit_positions$before11[row] <- ifelse(length(rank) > 0, rank, 999)
+}
+
+all_hit_positions <- all_hit_positions %>% rowwise() %>% mutate(combined = sum(short, title, inst, no_pure, before11)) %>% mutate (combined_no_11 = sum(short, title, inst, no_pure))

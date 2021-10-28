@@ -10,21 +10,23 @@ library(rjson)
 
 setwd(path)
 
-setCurrentVersion <- function(year, fixedOffset) {
+
+# FOr some reason in some reuses there have been entries from wrong ESTC ID, so that is what the removeId is for.
+setCurrentVersion <- function(year, fixedOffset, removeId) {
   offset <- ifelse(fixedOffset, "fixedOffset_", "")
   offsetFolder <- ifelse(fixedOffset, "/fixedOffset", "")
-  vol1 <<- read.csv(paste("ECCO_data", offsetFolder, "/spectator", year, "/", offset, "spectator1.csv", sep = ""),stringsAsFactors = FALSE) %>% rename(estc_id = system_control_number)
-  vol2 <<- read.csv(paste("ECCO_data", offsetFolder, "/spectator", year, "/", offset, "spectator2.csv", sep = ""),stringsAsFactors = FALSE) %>% rename(estc_id = system_control_number)
-  vol3 <<- read.csv(paste("ECCO_data", offsetFolder, "/spectator", year, "/", offset, "spectator3.csv", sep = ""),stringsAsFactors = FALSE) %>% rename(estc_id = system_control_number)
-  vol4 <<- read.csv(paste("ECCO_data", offsetFolder, "/spectator", year, "/", offset, "spectator4.csv", sep = ""),stringsAsFactors = FALSE) %>% rename(estc_id = system_control_number)
-  vol5 <<- read.csv(paste("ECCO_data", offsetFolder, "/spectator", year, "/", offset, "spectator5.csv", sep = ""),stringsAsFactors = FALSE) %>% rename(estc_id = system_control_number)
-  vol6 <<- read.csv(paste("ECCO_data", offsetFolder, "/spectator", year, "/", offset, "spectator6.csv", sep = ""),stringsAsFactors = FALSE) %>% rename(estc_id = system_control_number)
-  vol7 <<- read.csv(paste("ECCO_data", offsetFolder, "/spectator", year, "/", offset, "spectator7.csv", sep = ""),stringsAsFactors = FALSE) %>% rename(estc_id = system_control_number)
-  vol8 <<- read.csv(paste("ECCO_data", offsetFolder, "/spectator", year, "/", offset, "spectator8.csv", sep = ""),stringsAsFactors = FALSE) %>% rename(estc_id = system_control_number)
+  vol1 <<- read.csv(paste("ECCO_data", offsetFolder, "/spectator", year, "/", offset, "spectator1.csv", sep = ""),stringsAsFactors = FALSE) %>% rename(estc_id = system_control_number) %>% filter(!grepl(removeId, id_primary))
+  vol2 <<- read.csv(paste("ECCO_data", offsetFolder, "/spectator", year, "/", offset, "spectator2.csv", sep = ""),stringsAsFactors = FALSE) %>% rename(estc_id = system_control_number) %>% filter(!grepl(removeId, id_primary))
+  vol3 <<- read.csv(paste("ECCO_data", offsetFolder, "/spectator", year, "/", offset, "spectator3.csv", sep = ""),stringsAsFactors = FALSE) %>% rename(estc_id = system_control_number) %>% filter(!grepl(removeId, id_primary))
+  vol4 <<- read.csv(paste("ECCO_data", offsetFolder, "/spectator", year, "/", offset, "spectator4.csv", sep = ""),stringsAsFactors = FALSE) %>% rename(estc_id = system_control_number) %>% filter(!grepl(removeId, id_primary))
+  vol5 <<- read.csv(paste("ECCO_data", offsetFolder, "/spectator", year, "/", offset, "spectator5.csv", sep = ""),stringsAsFactors = FALSE) %>% rename(estc_id = system_control_number) %>% filter(!grepl(removeId, id_primary))
+  vol6 <<- read.csv(paste("ECCO_data", offsetFolder, "/spectator", year, "/", offset, "spectator6.csv", sep = ""),stringsAsFactors = FALSE) %>% rename(estc_id = system_control_number) %>% filter(!grepl(removeId, id_primary))
+  vol7 <<- read.csv(paste("ECCO_data", offsetFolder, "/spectator", year, "/", offset, "spectator7.csv", sep = ""),stringsAsFactors = FALSE) %>% rename(estc_id = system_control_number) %>% filter(!grepl(removeId, id_primary))
+  vol8 <<- read.csv(paste("ECCO_data", offsetFolder, "/spectator", year, "/", offset, "spectator8.csv", sep = ""),stringsAsFactors = FALSE) %>% rename(estc_id = system_control_number) %>% filter(!grepl(removeId, id_primary))
 }
 
 currentEdition <- "1720"
-setCurrentVersion(currentEdition, TRUE)
+setCurrentVersion(currentEdition, TRUE, "509")
 
 inspect_vol = vol1[c("id_primary", "id_secondary", "text_start_primary", "text_end_primary", "text_primary", "text_start_secondary", "text_end_secondary", "text_secondary", "offsetPrimaryStart", "offsetPrimaryEnd", "offsetSecondaryStart", "offsetSecondaryEnd")]
 volumes_array <- list(vol1, vol2, vol3, vol4, vol5, vol6, vol7, vol8)

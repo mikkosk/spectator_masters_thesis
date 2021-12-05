@@ -1,29 +1,4 @@
-Onko mahdollista saada siitä, mistä merkistä mikäkin numero alkaa?
-	-> Jos tsekkaa yksittäisiä lehtiä, pitää lainauksista varmaan parsia joitakin merkkejä alusta ja lopusta, että
-	ei vuoda väärään numeroon
-
-Erilaisia teoksia missä Spectatoria on käytetty on ainakin 800, vähintään 3000. Onko järkevää alkaa manuaalisesti katsomaan
-vai onko fiksumpaa lajitella jotenkin toisin ensin, ja sitten vasta katsoa mitkä asiat niiden sisällä ovat oleellisia trendejä.
-	-> Esim. Pitkät lainaukset ovat yleensä Spectatorin editioita. Tätä tiettyä suosittua lainausta käytetään aina
-	Miltonin Lost Paradisessa
-Tarkemman jaon voisi sitten tehdä vaikka lyhyemmät ajalta jos tarpeen.
-
-Miten suhteuttaa se, että asiat, jotka lainataan Spectatorista ei välttämättä ole peräisin Spectatorista?
-	-Pitäisikö testata suosituimpia lainauksia dataan ennen vuotta 1712?
-
 Miten osoittaa merkittäväksi uudelleen käyttö vrt. inspiroituneet tekstit?
-
-Voisiko pyöräyttää jonkin toisen version läpi testatakseen graafeja, jotta ei jää vain yhden version varaan?
-
-Miksi vaan osa Spectatoreista löytyy?
-
-Ovatko osumat millään tavalla arvokkaita? Onko liian sattuman varaista moneenko jakautuu?
-	-Voisi varmaan parsia kokoon lähekkäiset lainaukset, mutta maksaako vaivaa?
-__________________________________
-
-Kiinnostavia nostoja datasta:
-
-______________________________
 
 Mitä kaikkea voisi tehdä:
 
@@ -44,9 +19,6 @@ Kuka lainaa?
 	-Tähän voisi yhdistää Tonsonit
 	-Maantieteelliset ominaisuudet?
 
-
-Hume ja muut käyttävät mottoina
-
 Spectatorista voi ottaa pätkinä esim 50 eniten käytettyä lainausta ja katso mihin ne menee. Mitä siitä voidaan sanoa?
 Voidaanko nähdä,  että tietyt julkaisijat käyttää tiettyjä lainauksia? Leviääkö Tonsonin kautta?
 Miten Spectator osallistuu itse kirjallisen kulttuurin leivttämisen? Kuinka paljon osallistuu levittämiseen?
@@ -56,8 +28,6 @@ Spectatorin rooli brittiläisen kirjallisuuden katalysaattorina?
 Miten hakea yksittäisiä pätkiä datasta?
 
 Missä diskursseissa käytetään?
-
-
 
 SEURAAVIA VAIHEITA:
 
@@ -90,11 +60,7 @@ VALMIIDEN LAINAUSTEN SELVITTÄMINEN:
 	Tsekkaile mitä löytyy suosituimmasta
 
 1700-luvun puolessa välissä suýntyyy ajatus kriitikoista luomassa kaanonia
-	-> ei toimi tyhjiössä
-
-Versiot mitkä olisi kiva saada
-T097943, T152252, T097946, N024109, T097951, N024110
-	
+	-> ei toimi tyhjiössä	
 
 Esiin nousevia hahmoja:
 Milton
@@ -148,3 +114,88 @@ sekä jonkin verran puhdasta käytösopasmaista tekstiä
 
 - Addisonin tekstit tuntuvat korostuvan suosituimmissa teksteissä
 	- Menee osittain varmasti laianusten piikkiin
+
+-Chrisanity tekstit katoavat kokonaan, jos filteröi klusterit
+
+
+MUISTA:
+Jonkin sortin liite siitä mitä kaikkea teknistä projektissa on tehty
+
+IDEOITA KAPPALEIKSI KAKKOSLUKUUN:
+
+Spectatorin merkitys kaanonin ymmärtämisessä ja muodostamisessa ja kaanonin ymmärtäminen osana kohteliaisuutta
+	- Kramnick korostaa kaanonin ymmärtämistä osana englantilaisuutta
+	- Making of the English Literary Canon korostaa myös kaanonin ymmärtämistä hyvän maun luojana
+		- Addison avaa selvästi mikä on hienoa Miltonissa
+
+Kokonaisuuksien merkitys suhteessa niissä oleviin Spectatorin osiin
+	- Benedict korostaa sitä, että antologiat muuttavat yksittäisten tekstien merkitystä
+	- Mitä muuta käytettiin osana näitä antologioita?
+
+Lainausten ja muun vaikutuksen ero
+
+Spectatorin rooli viihteellisenä
+	- Monet suositut numerot sisältävät paljon vain luontokuvausta yms. 
+	- Benedict väittää antologioiden muuttavan lukemista viihteellisempään suuntaan
+
+Lainausten muutos läpi vuosikymmenten?
+
+
+---------------
+
+Voisi tsekkailla mitä tuollaiset Elegant extracts jutut pitää sisällään
+
+Kuinka paljon kielioppi ja hyvä käytös liittyvät yhteen?
+
+Useful and entertaining yhdistyvät monissa?
+	-Pitäisikö tarkastella siitä viihteellisyys näkökulmasta
+
+Pitäiskö laittaa joku kuvio mikä näyttää kuinka jakaantuu tuo käyttö näyttääkseen, että Spectatorin suosio ei ehkä perustu yhteen
+asiaan vaan vaikuttaa siltä, että ne ovat aika tasaisesti jakaantuneet
+
+Miksi The works of Horace nousee esiin siellä sun täällä
+
+Esim. aesopin fablet sellainen mistä voisi katsoa onko siinä Soectatoria esipuheena
+
+---------
+
+KIINNOSTAVIA TEOKSIA; JOTKA KÄYTTÄVÄT (Esiintyvät usein):
+T74593 The evidences of the Christian religion (Addisonin esiintyy ensimmäistä kertaa vuonna 1730?)
+
+T151642 Elegant extracts
+
+T16298	The pleasing instructor or Entertaining moralist
+
+T102914	English grammar
+
+T143734	Lectures on rhetoric and belles lettres
+
+T229563	The rambler
+
+N46318 The young gentleman and lady instructed in such 	
+
+N37015	The speaker
+
+T189114	Beauties of eminent writers
+
+T27777	Meditations and contemplations	
+
+T89184	Maxims, observations, and reflections
+
+T210892	The young gentleman and lady's monitor
+
+T131564	The nunnery for coquettes
+
+T85037	Lessons in elocution
+
+T52761	The works of Horace
+'
+T211771	The rule of life
+
+N1392	Elements of criticism
+
+N25883	The works of Virgil, in Latin and English
+
+SLOPE CHART
+
+5826, 4778, 2705, 932, 451

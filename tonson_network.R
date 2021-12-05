@@ -10,7 +10,9 @@ rownames(close_to_tonson) <- close_to_tonson$actor_id
 
 actor_estc_data <- estc_data[c("id", "actor_id")] %>% rename(estc_id = id) 
 
-reuse_data_with_actors <- spectatorReuse %>% mutate(reuse_id = row_number()) %>%
+
+#Currently with filtered data
+reuse_data_with_actors <- spectatorReuseFiltered %>% mutate(reuse_id = row_number()) %>%
   dplyr::left_join(decades, by="estc_id") %>%
   dplyr::left_join(actor_estc_data, by="estc_id") %>%
   mutate(type = ifelse(actor_id %in% tonson_actor_ids$actor_id, "Tonson", ifelse(actor_id %in% close_to_tonson$actor_id & publication_year >= close_to_tonson[actor_id,]$first_together, "Close", "Other"))) %>%

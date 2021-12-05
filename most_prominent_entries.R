@@ -26,3 +26,22 @@ prominent_v7_no_pure <- getProminentEntriesNoPure(vol7)
 prominent_v8_no_pure <- getProminentEntriesNoPure(vol8)
 
 write.csv(prominent_all_no_pure, file="C:/Users/mikko/OneDrive/Työpöytä/Gradu/masters_thesis_spectator/prominent.csv")
+
+#Filtered clusters
+prominent_all_no_pure_filtered <- getProminentEntriesNoPure(spectatorReuseFiltered)
+
+write.csv(prominent_all_no_pure_filtered, file="C:/Users/mikko/OneDrive/Työpöytä/Gradu/masters_thesis_spectator/prominent_filtered.csv")
+
+combined_prominent_entries <- merge(prominent_all_no_pure, prominent_all_no_pure_filtered, by="estc_id")
+
+
+prominent_entries_per_number <- function(data, number) {
+  data <- data %>% filter(startSpec == number | endSpec == number) %>% group_by(estc_id, title, publication_year) %>% dplyr::summarise(sum = sum(length), n = n())
+  return (data)
+}
+
+curNumProm <- prominent_entries_per_number(spectatorReuseFiltered, 195)
+
+firstno <- head(combinedNoPure %>% arrange(desc(number_hits.y)), 50)
+differ <- head(combinedUnder2500 %>% arrange(desc(number_hits.y)), 50) %>% filter(!(number %in% firstno$number))
+differ <- head(combinedNoPure %>% arrange(desc(number_hits.x)), 50) %>% filter(!(number %in% firstno$number)) %>% filter(!(number %in% differ$number))

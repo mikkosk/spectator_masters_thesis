@@ -15,20 +15,16 @@ getHitsPerCharacters <- function (volume, num) {
   volume <- volume %>%
     mutate(included_in_previous = if_else(estc_id %in% spectator$id, TRUE, FALSE))
   vol_max_character <- volume %>% dplyr::summarise(max = max(offsetPrimaryEnd)) %>% as.numeric
-  vol_reused_pages <- data.frame(c(0:floor(vol_max_character / 5000)),integer(floor(vol_max_character/ 5000) + 1), integer(floor(vol_max_character/ 5000) + 1)) %>%
-    dplyr::rename(chars = 1, character_hits_previous = 2, character_hits_other = 3)
+  vol_reused_pages <- data.frame(c(0:floor(vol_max_character / 5000)),integer(floor(vol_max_character/ 5000) + 1)) %>%
+    dplyr::rename(chars = 1, character_hits = 2)
   
   for(row in 1:nrow(volume)) {
     start <- floor(volume$offsetPrimaryStart[row] / 5000) + 1
     end <- floor(volume$offsetPrimaryEnd[row] / 5000) + 1
-    ifelse(volume$included_in_previous[row], 
-           vol_reused_pages$character_hits_previous[start:end] <- vol_reused_pages$character_hits_previous[start:end] + 1,
-           vol_reused_pages$character_hits_other[start:end] <- vol_reused_pages$character_hits_other[start:end] + 1)
+    vol_reused_pages$character_hits[start:end] <- vol_reused_pages$character_hits[start:end] + 1
     
   }
-  
-  vol_reused_pages <- vol_reused_pages %>% gather("type", "count", character_hits_previous:character_hits_other)
-  hits_fig <- ggplot(data = vol_reused_pages, aes(x = chars, y = count, fill = type)) + geom_bar(stat="identity") + ylim(0, 250) + labs(y="Hits", x="Characters in groups of five thousand") + ggtitle(paste("Volume", num))
+  hits_fig <- ggplot(data = vol_reused_pages, aes(x = chars, y = character_hits)) + geom_bar(stat="identity") + labs(y="Hits", x="Characters in groups of five thousand") + ggtitle(paste("Volume", num))
   return(hits_fig)
 }
 

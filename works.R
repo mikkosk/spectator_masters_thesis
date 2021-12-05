@@ -202,5 +202,8 @@ distinct_reuse_entries <- spectatorReuse %>% group_by(title, estc_id) %>%
   dplyr::summarise(sum = sum(length)) %>% ungroup() %>% group_by(title) %>% filter(sum == max(sum)) %>% ungroup() %>%
   distinct(estc_id, .keep_all = TRUE)
 
-under5000_entries <- spectatorReuse %>% group_by(estc_id) %>% 
+under5000_entries <- spectatorReuse %>% group_by(estc_id, title) %>% 
   dplyr::summarise(reuse_sum = sum(length)) %>% filter(reuse_sum < 5000)
+
+under2500_entries <- spectatorReuse %>% group_by(estc_id) %>% 
+  dplyr::summarise(reuse_sum = sum(length)) %>% filter(reuse_sum < 2500)

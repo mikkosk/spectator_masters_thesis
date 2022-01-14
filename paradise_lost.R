@@ -13,8 +13,6 @@ paradise_clustered <- read.csv(paste("ECCO_data/", "pl1_clustered.csv", sep = ""
 clusters_bef_1667 <- paradise_clustered %>% filter(publication_year < 1667) %>% distinct(clus, .keep_all = TRUE)
 paradise_filtered <- paradise_clustered %>% filter(!(clus %in% clusters_bef_1667$clus))
 
-
-
 ## DECADE COMPARISON. RUN decade_comparison_to_metadata.R before
 pd_by_decades <- paradise_filtered %>% dplyr::left_join(distinct(estc_decades, estc_id, .keep_all = TRUE)) %>% 
   filter(group < 1800) %>%
@@ -101,8 +99,6 @@ png(file=file,width=1200, height=700)
 print(pl_entries_with_cluster_decades_fig)
 dev.off()
 
-
-
 ## Spec cluster percentage
 pl_spec_users <- paradise_clus_comp %>% 
   group_by(estc_id) %>% 
@@ -132,4 +128,10 @@ spec_only_pl <- spec_pl_data %>%
   filter(publication_decade < 1800) %>%
   filter(publication_decade > 1660) %>%
   mutate(percentage = using_both / all * 100)
+
+paradise_entries <- paradise_filtered %>% mutate(spec_cluster = clus %in% pl_spec_uses$clus) %>%
+  mutate(publication_decade = publication_year - (publication_year %% 10)) %>%
+  filter(!grepl("milton", tolower(author))) %>%
+  filter(!grepl("paradise lost", tolower(title)))
   
+paradise_most_prominent <- paradise_entries %>% group_by(estc_id, title) %>% dplyr::summarise(sum = sum(length), n = n())
